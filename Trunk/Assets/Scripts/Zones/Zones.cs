@@ -77,7 +77,7 @@ public class Zones : MonoBehaviour
 
                 case ZonesInteractive.FIRE:
 
-                GameManager.instance.ResetScene();
+             
                 break;
         }
     }

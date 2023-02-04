@@ -18,7 +18,7 @@ public class StickStats : MonoBehaviour
 
     public float RoundNutrients => groundNutrients;
 
-    StickUI stickUI;
+    [SerializeField]StickUI stickUI;
     bool isRooted;
  
 
@@ -27,7 +27,7 @@ public class StickStats : MonoBehaviour
     public bool IsRooted { get { return isRooted; } set { isRooted = value; } }
     void Start()
     {
-        stickUI = FindObjectOfType<StickUI>().GetComponent<StickUI>();
+       
         stickWater = stickWaterMax; UpgradeWater(stickWaterMax);
         rb = GetComponent<Rigidbody>();
         UpgradeGround(0);
@@ -44,11 +44,7 @@ public class StickStats : MonoBehaviour
             stickWater = 0;
             GameManager.instance.GameOverPanel("YOU LOSE YOU NEED MORE WATER");
         }
-        else
-        {
-           
-            GameManager.instance.ClosedGameOverPanel();
-        }
+       
         if (isRooted)
         {
             rb.constraints = RigidbodyConstraints.FreezeAll;
