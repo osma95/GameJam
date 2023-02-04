@@ -18,12 +18,14 @@ public class MoveBehaviour : GenericBehaviour
 	private bool isColliding;                       // Boolean to determine if the player has collided with an obstacle.
 
 	StickStats stickStats;
+	Animator animator;
 	// Start is always called after any Awake functions.
 	void Start()
 	{
 		DontDestroyOnLoad(gameObject);
 		// Set up the references.
 		jumpBool = Animator.StringToHash("Jump");
+		animator = GetComponent<Animator>();
 		groundedBool = Animator.StringToHash("Grounded");
 		behaviourManager.GetAnim.SetBool(groundedBool, true);
 		stickStats=GetComponent<StickStats>();
@@ -140,7 +142,9 @@ public class MoveBehaviour : GenericBehaviour
 		}
 
 		behaviourManager.GetAnim.SetFloat(speedFloat, speed, speedDampTime, Time.deltaTime);
-	}
+		animator.SetFloat("Speed", speed);
+
+    }
 
 	// Remove vertical rigidbody velocity.
 	private void RemoveVerticalVelocity()
