@@ -5,7 +5,7 @@ using UnityEngine;
 public class Zones : MonoBehaviour
 {
     
-    public  enum ZonesInteractive { WATER,GROUND,WINDZONE}
+    public  enum ZonesInteractive { WATER,GROUND,WINDZONE,FIRE}
 
     public ZonesInteractive zonesInteractive;
     bool canReg=true;
@@ -73,6 +73,11 @@ public class Zones : MonoBehaviour
                 }
 
 
+                break;
+
+                case ZonesInteractive.FIRE:
+
+                GameManager.instance.ResetScene();
                 break;
         }
     }
