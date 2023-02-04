@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scene/Lobby.unity
     guid: 7d988ae1ccd06de4f8730b568b7dbe5c
   - enabled: 1
-    path: Assets/Scene/GameTutotial.unity
+    path: Assets/Scene/Museum.unity
     guid: 05dfcab88b054644885e2ecb9ff72f29
+  - enabled: 1
+    path: Assets/Scene/Rooftop.unity
+    guid: cadf38bfeea98f34390219c5f695f1ad
   m_configObjects: {}

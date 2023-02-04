@@ -95,6 +95,10 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void WinGame()
+    {
+
+    }
     public void ResetScene()
     {
 
