@@ -10,21 +10,22 @@ public class StickUI : MonoBehaviour
     [SerializeField]
 
     Slider ground_Slider;
-
-
-    [SerializeField]
+ [SerializeField]
     GameObject isRootedPanel;
+  
 
-   
+
     void Start()
     {
-
+        DesaRootPanel();
+       
     }
+  
 
     // Update is called once per frame
     void Update()
     {
-        
+      
     }
     
     public void ActiveRootPanel()

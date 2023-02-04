@@ -130,18 +130,11 @@ public class TrunkMovement : MonoBehaviour
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotationX;
 
         }
-     if (windZone)
-        {
-            WindForce();
-        }
+    
 
     }
 
-    void IsGrounded()
-    {
-       
-      
-    }
+   
     void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space)&&isGrounded)
@@ -151,17 +144,6 @@ public class TrunkMovement : MonoBehaviour
         }
    
     }
-    void OnDrawGizmos()
-    {
-        // Draw a yellow sphere at the transform's position
-        Gizmos.color = Color.yellow;
-        Vector3 dire = groundCheckGO.transform.TransformDirection(Vector3.down)* 0.19f;
-        Gizmos.DrawRay(groundCheckGO.transform.position,dire);
-    }
-
- public   void WindForce()
-    {
-        _rigidbody.AddForce(windZone.GetComponent<WindZone>().direction * windZone.GetComponent<WindZone>().strength);
-    }
+    
 
 }

@@ -16,12 +16,17 @@ public class StickStats : MonoBehaviour
 
     public float RoundNutrients => groundNutrients;
 
-    StickUI stickUI;    
+    StickUI stickUI;
+    bool isRooted;
+    [SerializeField]
+    GameObject rootPanel;
+   Rigidbody rb;
+    public bool IsRooted { get { return isRooted; } set { isRooted = value; } }
     void Start()
     {
         stickUI = FindObjectOfType<StickUI>().GetComponent<StickUI>();
         stickWater = stickWaterMax; UpgradeWater(stickWaterMax);
-
+        rb = GetComponent<Rigidbody>();
         UpgradeGround(0);
     }
 
@@ -29,7 +34,7 @@ public class StickStats : MonoBehaviour
     void Update()
     {
      
-        UpgradeWater(-8f * Time.deltaTime);
+        UpgradeWater(-0.25f * Time.deltaTime);
 
         if (stickWater <= 0)
         {
@@ -41,7 +46,19 @@ public class StickStats : MonoBehaviour
            
           //  GameManager.instance.ClosedGameOverPanel();
         }
-        
+        if (isRooted)
+        {
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            stickUI.ActiveRootPanel();
+            rb.velocity = Vector3.zero;
+        }
+        else
+        {
+            stickUI.DesaRootPanel();
+            rb.constraints = RigidbodyConstraints.None;
+            rb.constraints = RigidbodyConstraints.FreezeRotationZ;
+            rb.constraints = RigidbodyConstraints.FreezeRotationX;
+        }
     }
 
     public void UpgradeWater(float newWater)

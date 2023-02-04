@@ -25,7 +25,7 @@ public class EndZone : MonoBehaviour
            
             if (scene.name== "Park")
             {
-
+                GameManager.instance.WinGame();
             }
         }
     }

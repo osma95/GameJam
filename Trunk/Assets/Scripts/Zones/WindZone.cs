@@ -5,7 +5,7 @@ using UnityEngine;
 public class WindZone : MonoBehaviour
 {
 
-    public float strength;
+  /*  public float strength;
     public Vector3 direction;
 
     public bool isActive;
@@ -47,7 +47,7 @@ public class WindZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        /*if (other.CompareTag("Player"))
         {
             if (other.GetComponent<TrunkMovement>()) {
              TrunkMovement tm= other.GetComponent<TrunkMovement>();
@@ -78,5 +78,5 @@ public class WindZone : MonoBehaviour
     }
 
 
-
+        */
 }
