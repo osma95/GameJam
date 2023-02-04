@@ -579,8 +579,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 103962276}
   m_CullTransparentMesh: 1
-<<<<<<< Updated upstream
-=======
 --- !u!1 &123677580
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,7 +657,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123677580}
   m_CullTransparentMesh: 1
->>>>>>> Stashed changes
 --- !u!114 &236557833 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4586993056869112200, guid: 27aa01020436b03498a30c5b8e0ae938, type: 3}
@@ -4159,9 +4156,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< Updated upstream
---- !u!114 &1690882728
-=======
 --- !u!224 &1681891292
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4183,7 +4177,6 @@ RectTransform:
   m_SizeDelta: {x: 1713.1272, y: 91.1204}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1681891293
->>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5191,8 +5184,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2005328553}
   m_CullTransparentMesh: 1
-<<<<<<< Updated upstream
-=======
 --- !u!1 &2023321204
 GameObject:
   m_ObjectHideFlags: 0
@@ -5311,7 +5302,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingBarHolder: {fileID: 123677580}
   loadingBar: {fileID: 2106750534}
->>>>>>> Stashed changes
 --- !u!1 &2074253447
 GameObject:
   m_ObjectHideFlags: 0
@@ -5413,10 +5403,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30cb91b9b8a82694d943efe5b423d596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
---- !u!1001 &3538797056799107420
-PrefabInstance:
-=======
 --- !u!1 &2082754528
 GameObject:
   m_ObjectHideFlags: 0
@@ -5580,7 +5566,6 @@ MonoBehaviour:
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &2106750535
 CanvasRenderer:
->>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
