@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -11,7 +13,7 @@ public class GameManager : MonoBehaviour
     private Scene scene;
     string lobby = "Lobby";
     public GameObject gameOverPanel;
-
+    public GameObject WinPanel;
     public TMP_Text gameOverText;
     private void Awake()
     {
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
         scene = SceneManager.GetActiveScene();
         pausedMenu.SetActive(false);
         ClosedGameOverPanel();
+        WinPanel.SetActive(false);
     }
    public void MainMenuLoading()
     {
@@ -97,6 +100,8 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
+        WinPanel.SetActive(true);
+
 
     }
     public void ResetScene()

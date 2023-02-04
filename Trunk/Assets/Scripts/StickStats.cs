@@ -8,9 +8,11 @@ public class StickStats : MonoBehaviour
 
     float stickWaterMax=100;
 
+   public int level;
+
     public float StickWater =>stickWater;
 
-     float groundNutrients;
+  [SerializeField]   float groundNutrients;
 
     float groundNutrientMax = 100;
 
@@ -18,8 +20,9 @@ public class StickStats : MonoBehaviour
 
     StickUI stickUI;
     bool isRooted;
-    [SerializeField]
-    GameObject rootPanel;
+ 
+
+    public List<GameObject> stickModels = new List<GameObject>();   
    Rigidbody rb;
     public bool IsRooted { get { return isRooted; } set { isRooted = value; } }
     void Start()
@@ -35,16 +38,16 @@ public class StickStats : MonoBehaviour
     {
      
         UpgradeWater(-0.25f * Time.deltaTime);
-
+        levelUP();
         if (stickWater <= 0)
         {
             stickWater = 0;
-           // GameManager.instance.GameOverPanel("YOU LOSE YOU NEED MORE WATER");
+            GameManager.instance.GameOverPanel("YOU LOSE YOU NEED MORE WATER");
         }
         else
         {
            
-          //  GameManager.instance.ClosedGameOverPanel();
+            GameManager.instance.ClosedGameOverPanel();
         }
         if (isRooted)
         {
@@ -60,7 +63,40 @@ public class StickStats : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezeRotationX;
         }
     }
+    void levelUP()
+    {
+        LevelUPStick();
+        if (groundNutrients >= 100)
+        {
+            groundNutrients = 0;
+            if(level!=3)
+            level++;
+        }
+    }
+    void LevelUPStick()
+    {
 
+        switch (level)
+        {
+            case 0:
+                stickModels[0].gameObject.SetActive(true);
+                stickModels[1].gameObject.SetActive(false);
+                stickModels[2].gameObject.SetActive(false);
+                break;
+
+                case 1:
+                stickModels[0].gameObject.SetActive(false);
+                stickModels[1].gameObject.SetActive(true);
+                stickModels[2].gameObject.SetActive(false);
+                break;
+
+            case 2:
+                stickModels[0].gameObject.SetActive(false);
+                stickModels[1].gameObject.SetActive(false);
+                stickModels[2].gameObject.SetActive(true);
+                break;
+        }
+    }
     public void UpgradeWater(float newWater)
     {
         
