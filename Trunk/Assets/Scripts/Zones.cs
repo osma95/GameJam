@@ -5,7 +5,7 @@ using UnityEngine;
 public class Zones : MonoBehaviour
 {
     
-    public  enum ZonesInteractive { WATER,GROUND,WINZONE}
+    public  enum ZonesInteractive { WATER,GROUND,WINDZONE}
 
     public ZonesInteractive zonesInteractive;
     bool canReg=true;
@@ -37,7 +37,7 @@ public class Zones : MonoBehaviour
                         if (stickStats.StickWater < 100&&trunk.IsRooted) {
 
                            
-                            other.GetComponent<StickStats>().UpgradeWater(5 *Time.deltaTime);
+                            other.GetComponent<StickStats>().UpgradeWater(15 *Time.deltaTime);
                         }
                        
                     }

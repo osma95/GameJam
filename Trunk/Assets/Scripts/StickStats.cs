@@ -29,7 +29,18 @@ public class StickStats : MonoBehaviour
     void Update()
     {
      
-        UpgradeWater(-0.2f * Time.deltaTime);
+        UpgradeWater(-8f * Time.deltaTime);
+
+        if (stickWater <= 0)
+        {
+            stickWater = 0;
+            GameManager.instance.GameOverPanel("YOU LOSE YOU NEED MORE WATER");
+        }
+        else
+        {
+            GameManager.instance.ClosedGameOverPanel();
+        }
+        
     }
 
     public void UpgradeWater(float newWater)

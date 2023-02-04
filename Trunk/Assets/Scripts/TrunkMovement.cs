@@ -6,6 +6,11 @@ using UnityEngine;
 
 public class TrunkMovement : MonoBehaviour
 {
+    [SerializeField]
+    Rigidbody _rigidbody;
+    StickUI stickUI;
+    [SerializeField]
+    Camera _camera;
     public float distanceToCheck = 0.5f;
      bool isGrounded;
 
@@ -17,13 +22,9 @@ public class TrunkMovement : MonoBehaviour
     [SerializeField]
     Transform pivotB;
 
+    public bool windZoneStatus;
 
-
-    [SerializeField]
-    Rigidbody _rigidbody;
-
-    [SerializeField]
-    Camera _camera;
+    public WindZone windZone;
     public
     float jumpForce;
    
@@ -37,6 +38,7 @@ public class TrunkMovement : MonoBehaviour
     public bool IsRooted { get { return isRooted; } set { isRooted = value; } }
     void Start()
     {
+        stickUI = FindObjectOfType<StickUI>().GetComponent<StickUI>();
         _rigidbody = GetComponent<Rigidbody>();
     }
 
@@ -82,14 +84,14 @@ public class TrunkMovement : MonoBehaviour
 
                     Vector3 foward = Vector3.RotateTowards(transform.forward, dirMovement, 80 * Time.deltaTime, 0);
                     Quaternion rotation = Quaternion.LookRotation(foward);
-                    _rigidbody.velocity = new Vector3(dirMovement.x, _rigidbody.velocity.y, dirMovement.z);
+                    _rigidbody.velocity = new Vector3(dirMovement.x, _rigidbody.velocity.y, dirMovement.z ) * speed;
                     _rigidbody.rotation = rotation;
-                    
+                    stickUI.DesaRootPanel();
                     Jump();
                 } else
                 {
 
-                    return;
+                    stickUI.ActiveRootPanel();
                 }
 
                 break;
@@ -115,9 +117,23 @@ public class TrunkMovement : MonoBehaviour
         {
             isRooted = false;
         }
-     
 
+        if (isRooted)
+        {
+            _rigidbody.constraints = RigidbodyConstraints.FreezePosition;
+            _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
 
+        }
+        else
+        {
+            _rigidbody.constraints = RigidbodyConstraints.FreezeRotationZ;
+            _rigidbody.constraints = RigidbodyConstraints.FreezeRotationX;
+
+        }
+     if (windZone)
+        {
+            WindForce();
+        }
 
     }
 
@@ -142,4 +158,10 @@ public class TrunkMovement : MonoBehaviour
         Vector3 dire = groundCheckGO.transform.TransformDirection(Vector3.down)* 0.19f;
         Gizmos.DrawRay(groundCheckGO.transform.position,dire);
     }
+
+ public   void WindForce()
+    {
+        _rigidbody.AddForce(windZone.GetComponent<WindZone>().direction * windZone.GetComponent<WindZone>().strength);
+    }
+
 }

@@ -12,6 +12,10 @@ public class StickUI : MonoBehaviour
     Slider ground_Slider;
 
 
+    [SerializeField]
+    GameObject isRootedPanel;
+
+   
     void Start()
     {
 
@@ -22,8 +26,16 @@ public class StickUI : MonoBehaviour
     {
         
     }
-
-  public  void UpgradeGroundSlider(float max,float value)
+    
+    public void ActiveRootPanel()
+    {
+        isRootedPanel.SetActive(true);
+    }
+    public void DesaRootPanel()
+    {
+        isRootedPanel.SetActive(false);
+    }
+    public  void UpgradeGroundSlider(float max,float value)
     {
         ground_Slider.minValue = 0;
         ground_Slider.maxValue = max;

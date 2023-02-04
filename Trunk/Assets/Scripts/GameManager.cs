@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     public GameObject pausedMenu;
     private Scene scene;
     string lobby = "Lobby";
+    public GameObject gameOverPanel;
+
+    public TMP_Text gameOverText;
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -27,8 +30,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         scene = SceneManager.GetActiveScene();
-        pausedMenu.SetActive(false); 
-
+        pausedMenu.SetActive(false);
+        ClosedGameOverPanel();
     }
    public void MainMenuLoading()
     {
@@ -74,9 +77,26 @@ public class GameManager : MonoBehaviour
 
 
     }
+    public void GameOverPanel(string textGameOver)
+    {
+        gameOverPanel.SetActive(true);
+        gameOverText.text = textGameOver;
+        Time.timeScale = 0;
+    }
+    public void ClosedGameOverPanel()
+    {
+        gameOverPanel.SetActive(false);
+     
+        Time.timeScale = 1;
+    }
 
     public void OnClosedGame()
     {
         Application.Quit();
+    }
+
+    public void ResetScene()
+    {
+
     }
 }
