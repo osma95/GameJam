@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverPanel;
     public GameObject WinPanel;
     public TMP_Text gameOverText;
+
+    public GameObject player;
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -39,21 +41,23 @@ public class GameManager : MonoBehaviour
    public void MainMenuLoading()
     {
         pausedMenu.SetActive(false);
+        player= FindAnyObjectByType<MoveBehaviour>().gameObject;
+        Destroy(player.gameObject);
         LoadingScreen.instance.LoadLevel(lobby);
     }
     void Update()
     {
-        if (scene.name == "Lobby") return;
-        
-            if (Input.GetKeyDown(KeyCode.Escape) && !pausedMenu.activeInHierarchy)
+        if (scene.name != "Lobby") {   if (Input.GetKeyDown(KeyCode.Escape) && !pausedMenu.activeInHierarchy)
             {
-                PausedGame();
+                PausedGame(); Time.timeScale = 0;
             }
             else
         if (Input.GetKeyDown(KeyCode.Escape) && pausedMenu.activeInHierarchy)
             {
                 DesPausedGame();
-            }
+            }}
+        
+          
 
         
         
@@ -89,7 +93,7 @@ public class GameManager : MonoBehaviour
     public void ClosedGameOverPanel()
     {
         gameOverPanel.SetActive(false);
-     
+     LoadingScreen.instance.LoadLevel(lobby);
         Time.timeScale = 1;
     }
 
@@ -106,6 +110,6 @@ public class GameManager : MonoBehaviour
     }
     public void ResetScene()
     {
-
+        LoadingScreen.instance.LoadLevel(SceneManager.GetActiveScene().name );
     }
 }
