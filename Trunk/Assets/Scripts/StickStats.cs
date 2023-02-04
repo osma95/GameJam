@@ -34,11 +34,12 @@ public class StickStats : MonoBehaviour
         if (stickWater <= 0)
         {
             stickWater = 0;
-            GameManager.instance.GameOverPanel("YOU LOSE YOU NEED MORE WATER");
+           // GameManager.instance.GameOverPanel("YOU LOSE YOU NEED MORE WATER");
         }
         else
         {
-            GameManager.instance.ClosedGameOverPanel();
+           
+          //  GameManager.instance.ClosedGameOverPanel();
         }
         
     }
