@@ -78,6 +78,7 @@ public class Zones : MonoBehaviour
     }
 
 
+   
    void DecreaseIngredent()
     {
         ingredient =-ingredientForSecond * Time.deltaTime;
