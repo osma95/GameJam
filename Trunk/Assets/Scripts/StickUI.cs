@@ -7,12 +7,14 @@ public class StickUI : MonoBehaviour
     [SerializeField]
 
     Slider water_Slider;
+    [SerializeField]
+
+    Slider ground_Slider;
 
 
     void Start()
     {
-        
-        
+
     }
 
     // Update is called once per frame
@@ -20,11 +22,14 @@ public class StickUI : MonoBehaviour
     {
         
     }
-    void StartWaterSlider()
+
+  public  void UpgradeGroundSlider(float max,float value)
     {
-        water_Slider.minValue = 0;
-        water_Slider.maxValue = 100;
-        water_Slider.value = 100;
+        ground_Slider.minValue = 0;
+        ground_Slider.maxValue = max;
+        ground_Slider.value = value;
+
+
 
     }
 

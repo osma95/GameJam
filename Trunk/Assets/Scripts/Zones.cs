@@ -33,7 +33,8 @@ public class Zones : MonoBehaviour
                     {
                         
                         StickStats stickStats = other.GetComponent<StickStats>();
-                        if (stickStats.StickWater < 100) {
+                        TrunkMovement trunk= other.GetComponent<TrunkMovement>();
+                        if (stickStats.StickWater < 100&&trunk.IsRooted) {
 
                            
                             other.GetComponent<StickStats>().UpgradeWater(5 *Time.deltaTime);
@@ -43,6 +44,27 @@ public class Zones : MonoBehaviour
                 }
                     break;
 
+                case ZonesInteractive.GROUND:
+                if (other.CompareTag("Player"))
+                {
+
+                    if (other.GetComponent<StickStats>())
+                    {
+
+                        StickStats stickStats = other.GetComponent<StickStats>();
+                        TrunkMovement trunk = other.GetComponent<TrunkMovement>();
+                        if (stickStats.RoundNutrients < 100 && trunk.IsRooted)
+                        {
+                           
+
+                            other.GetComponent<StickStats>().UpgradeGround(5 * Time.deltaTime);
+                        }
+
+                    }
+                }
+
+
+                break;
         }
     }
 
