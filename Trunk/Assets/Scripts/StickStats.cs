@@ -70,26 +70,7 @@ public class StickStats : MonoBehaviour
     void LevelUPStick()
     {
 
-        switch (level)
-        {
-            case 0:
-                stickModels[0].gameObject.SetActive(true);
-                stickModels[1].gameObject.SetActive(false);
-                stickModels[2].gameObject.SetActive(false);
-                break;
-
-                case 1:
-                stickModels[0].gameObject.SetActive(false);
-                stickModels[1].gameObject.SetActive(true);
-                stickModels[2].gameObject.SetActive(false);
-                break;
-
-            case 2:
-                stickModels[0].gameObject.SetActive(false);
-                stickModels[1].gameObject.SetActive(false);
-                stickModels[2].gameObject.SetActive(true);
-                break;
-        }
+        
     }
     public void UpgradeWater(float newWater)
     {
