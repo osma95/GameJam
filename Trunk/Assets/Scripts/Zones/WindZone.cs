@@ -5,7 +5,7 @@ using UnityEngine;
 public class WindZone : MonoBehaviour
 {
 
-  /*  public float strength;
+ = public float strength;
     public Vector3 direction;
 
     public bool isActive;
@@ -47,16 +47,12 @@ public class WindZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        /*if (other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            if (other.GetComponent<TrunkMovement>()) {
-             TrunkMovement tm= other.GetComponent<TrunkMovement>();
-                tm.windZone = this;
-
+            if (other.GetComponent<SmoothGravity>())
+        {
 
             }
-          
-            
         }
     }
     private void OnTriggerExit(Collider other)
@@ -78,5 +74,16 @@ public class WindZone : MonoBehaviour
     }
 
 
-        */
+       
 }
+if (other.CompareTag("Player"))
+{
+
+    if (other.GetComponent<TrunkMovement>())
+    {
+        TrunkMovement tm = other.GetComponent<TrunkMovement>();
+        tm.windZone = this;
+
+
+
+    }

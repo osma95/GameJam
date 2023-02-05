@@ -1,10 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class SmoothGravity : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private float _verticalVelocity;
+    [Tooltip("The height the player can jump")]
+    public float JumpHeight = 1.2f;
+    public bool windZoneStatus;
+
+    public WindZone windZone;
+    [Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
+    public float Gravity = -15.0f;
     void Start()
     {
         
@@ -13,6 +20,10 @@ public class SmoothGravity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+     if(Input.GetAxisRaw("Vertical")>0)
+        {
+            _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+
+        }
     }
 }

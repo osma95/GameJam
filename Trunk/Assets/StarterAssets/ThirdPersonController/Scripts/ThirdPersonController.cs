@@ -109,7 +109,9 @@ namespace StarterAssets
         private const float _threshold = 0.01f;
 
         private bool _hasAnimator;
+        public bool windZoneStatus;
 
+        public WindZone windZone;
         private bool IsCurrentDeviceMouse
         {
             get
@@ -160,12 +162,12 @@ namespace StarterAssets
             GroundedCheck();
             if(!stickStats.IsRooted)
             Move();
-            if (Input.GetKeyDown(KeyCode.R) && !stickStats.IsRooted)
+            if (Input.GetKeyDown(KeyCode.R) && !stickStats.IsRooted && Grounded)
             {
                 stickStats.IsRooted = true;
             }
             else
-     if (Input.GetKeyDown(KeyCode.R) && stickStats.IsRooted)
+     if (Input.GetKeyDown(KeyCode.R) && stickStats.IsRooted && Grounded)
             {
                 stickStats.IsRooted = false;
             }
