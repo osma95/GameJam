@@ -9,7 +9,7 @@ public class EndZone : MonoBehaviour
     public GameObject TreeFinal;
     StickIdle stickIdle;
     StickStats stickStats;
-    public CinemachineVirtualCamera cinema;
+    public GameObject cinema;
     Vector3 scale;
     void Start()
     {
