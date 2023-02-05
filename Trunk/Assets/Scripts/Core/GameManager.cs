@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using StarterAssets;
+using System.Collections.Generic;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,8 +16,8 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverPanel;
     public GameObject WinPanel;
     public TMP_Text gameOverText;
-
-   
+    public GameObject winPanel;
+   public List<GameObject> gameOverObjects=new List<GameObject>() ;
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
         WinPanel.SetActive(false);
     }
    public void MainMenuLoading()
+
     {  gameOverPanel.SetActive(false);
         pausedMenu.SetActive(false);
        // player= FindAnyObjectByType<MoveBehaviour>().gameObject;
@@ -50,18 +52,23 @@ public class GameManager : MonoBehaviour
         if (scene.name != "Lobby") {   if (Input.GetKeyDown(KeyCode.Escape) && !pausedMenu.activeInHierarchy)
             {
                 PausedGame(); Time.timeScale = 0;
+               StarterAssetsInputs th = FindAnyObjectByType<StarterAssetsInputs>();
+                th.cursorLocked = false;
+                th.cursorInputForLook = false;
             }
             else
         if (Input.GetKeyDown(KeyCode.Escape) && pausedMenu.activeInHierarchy)
             {
+              
+                StarterAssetsInputs th = FindAnyObjectByType<StarterAssetsInputs>();
+                th.cursorInputForLook = true;
+                th.cursorLocked = true;
                 DesPausedGame();
             }}
         
           
 
         
-        
-
 
 
     }
@@ -92,6 +99,7 @@ public class GameManager : MonoBehaviour
     }
     public void ClosedGameOverPanel()
     {
+        winPanel.gameObject.SetActive(false);
         gameOverPanel.SetActive(false);
      LoadingScreen.instance.LoadLevel(lobby);
         Time.timeScale = 1;
@@ -104,9 +112,13 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
-        WinPanel.SetActive(true);
-
+      
+        ActivateObjects();
 
     }
-   
+    public void ActivateObjects()
+    {
+        foreach (var obj in gameOverObjects)
+            obj.SetActive(true);
+    }
 }
