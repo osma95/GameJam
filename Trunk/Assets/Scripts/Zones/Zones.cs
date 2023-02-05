@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using StarterAssets;
 public class Zones : MonoBehaviour
 {
 
@@ -25,6 +25,89 @@ public class Zones : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider other) {
+       switch (zonesInteractive)
+        {
+            case ZonesInteractive.WATER:
+
+                if (other.CompareTag("Player"))
+                {   
+                   ThirdPersonController person = other.GetComponent<ThirdPersonController>();
+                    person.ChangeAudio(true);
+                }
+                break;
+
+            case ZonesInteractive.GROUND:
+                if (other.CompareTag("Player"))
+                {
+
+                    if (other.GetComponent<StickStats>())
+                    {
+
+                        StickStats stickStats = other.GetComponent<StickStats>();
+
+                        if (stickStats.RoundNutrients < 100 && stickStats.IsRooted)
+                        {
+
+
+                            other.GetComponent<StickStats>().UpgradeGround(ingredientForSecond * Time.deltaTime);
+                        }
+
+                    }
+                }
+
+
+                break;
+
+            case ZonesInteractive.FIRE:
+
+
+                break;
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+
+        switch (zonesInteractive)
+        {
+            case ZonesInteractive.WATER:
+
+                if (other.CompareTag("Player"))
+                {   
+                   ThirdPersonController person = other.GetComponent<ThirdPersonController>();
+                    person.ChangeAudio(false);
+                }
+                break;
+
+            case ZonesInteractive.GROUND:
+                if (other.CompareTag("Player"))
+                {
+
+                    if (other.GetComponent<StickStats>())
+                    {
+
+                        StickStats stickStats = other.GetComponent<StickStats>();
+
+                        if (stickStats.RoundNutrients < 100 && stickStats.IsRooted)
+                        {
+
+
+                            other.GetComponent<StickStats>().UpgradeGround(ingredientForSecond * Time.deltaTime);
+                        }
+
+                    }
+                }
+
+
+                break;
+
+            case ZonesInteractive.FIRE:
+
+
+                break;
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
         switch (zonesInteractive)
@@ -32,8 +115,7 @@ public class Zones : MonoBehaviour
             case ZonesInteractive.WATER:
 
                 if (other.CompareTag("Player"))
-                {
-
+                {   
                     if (other.GetComponent<StickStats>())
                     {
 
