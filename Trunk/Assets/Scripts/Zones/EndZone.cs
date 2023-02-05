@@ -20,8 +20,7 @@ public class EndZone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
          {
-            SceneManager.LoadScene(gameScene);
-           
+            LoadingScreen.instance.LoadLevel(gameScene);
             if (scene.name== "Park")
             {
                 GameManager.instance.WinGame();
