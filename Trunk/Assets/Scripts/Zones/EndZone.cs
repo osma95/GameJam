@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,7 +20,7 @@ public class EndZone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
          {
-            LoadingScreen.instance.LoadLevel(gameScene);
+            SceneManager.LoadScene(gameScene);
            
             if (scene.name== "Park")
             {

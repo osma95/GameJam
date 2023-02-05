@@ -21,7 +21,9 @@ public class BallDetec : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-         //   LoadingScreen.instance.LoadLevel(sceneName);
+            SceneManager.LoadScene(sceneName);
+            TutorialHelp th =FindAnyObjectByType<TutorialHelp>();
+            th.StartCoroutine(th.ActivePanel(th.ballDie));
         }
        
     }

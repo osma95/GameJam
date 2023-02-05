@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjetDest : MonoBehaviour
+public class WindCaution : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -15,5 +15,4 @@ public class ObjetDest : MonoBehaviour
     {
         
     }
-    
 }

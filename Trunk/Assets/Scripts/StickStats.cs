@@ -75,13 +75,17 @@ public class StickStats : MonoBehaviour
     public void UpgradeWater(float newWater)
     {
         
-
+        
         stickWater+=newWater;
         stickUI.UpdateWaterSlider(stickWaterMax,stickWater);
         if (stickWater >= stickWaterMax)
         {
           
             stickWater =stickWaterMax;
+        }
+        else
+        {
+
         }
 
     }

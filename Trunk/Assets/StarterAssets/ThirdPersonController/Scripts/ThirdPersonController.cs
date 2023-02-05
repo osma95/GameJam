@@ -110,6 +110,10 @@ namespace StarterAssets
 
         private bool _hasAnimator;
 
+        public bool windZone;
+
+        public WindZone inWindZone =null;
+       
         private bool IsCurrentDeviceMouse
         {
             get
@@ -155,6 +159,11 @@ namespace StarterAssets
         private void Update()
         {
             _hasAnimator = TryGetComponent(out _animator);
+
+            if (windZone&&inWindZone.isActive&& !stickStats.IsRooted)
+            {
+                _controller.Move(inWindZone.direction * inWindZone.strength * Time.deltaTime);
+            }
 
             JumpAndGravity();
             GroundedCheck();
