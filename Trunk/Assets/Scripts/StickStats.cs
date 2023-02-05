@@ -39,7 +39,7 @@ public class StickStats : MonoBehaviour
     void Update()
     {
      
-        UpgradeWater(-waterForSecond * Time.deltaTime);
+        UpgradeWater(-waterForSecond * 20 * Time.deltaTime);
         levelUP();
         if (stickWater <= 0)
         {
