@@ -30,6 +30,27 @@ namespace StarterAssets
 
         public AudioClip LandingAudioClip;
         public AudioClip[] FootstepAudioClips;
+        public AudioClip stepNormal1;
+        public AudioClip stepNormal2;
+        public AudioClip stepWater1;
+        public AudioClip stepWater2;
+         
+        public void ChangeAudio(bool valueEnter){
+            
+            if(valueEnter){
+                FootstepAudioClips[0] = stepWater1;
+                FootstepAudioClips[1] = stepWater2;
+            }else{
+                FootstepAudioClips[0] = stepNormal1;
+                FootstepAudioClips[1] = stepNormal2;
+            }
+            
+            
+            
+
+
+        }
+
         [Range(0, 1)] public float FootstepAudioVolume = 0.5f;
 
         [Space(10)]
