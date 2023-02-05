@@ -9,7 +9,7 @@ public class StickStats : MonoBehaviour
     float stickWaterMax=100;
 
    public int level;
-
+    public float waterForSecond;
     public float StickWater =>stickWater;
 
   [SerializeField]   float groundNutrients;
@@ -37,7 +37,7 @@ public class StickStats : MonoBehaviour
     void Update()
     {
      
-        UpgradeWater(-0.25f * Time.deltaTime);
+        UpgradeWater(-waterForSecond * Time.deltaTime);
         levelUP();
         if (stickWater <= 0)
         {
@@ -70,11 +70,7 @@ public class StickStats : MonoBehaviour
     void LevelUPStick()
     {
 
-<<<<<<< HEAD
-        
-=======
-       
->>>>>>> 045a416d92aae3e22fb149ab82fca60a4a5d709a
+
     }
     public void UpgradeWater(float newWater)
     {
