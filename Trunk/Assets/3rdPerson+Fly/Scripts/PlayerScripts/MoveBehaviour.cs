@@ -22,7 +22,7 @@ public class MoveBehaviour : GenericBehaviour
 	// Start is always called after any Awake functions.
 	void Start()
 	{
-		DontDestroyOnLoad(gameObject);
+		
 		// Set up the references.
 		jumpBool = Animator.StringToHash("Jump");
 		animator = GetComponent<Animator>();

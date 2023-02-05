@@ -8,10 +8,10 @@ public class CharacterPositionInit : MonoBehaviour
     public Transform initPoint;
     void Start()
     {
-        player = FindAnyObjectByType<MoveBehaviour>().gameObject;
+       player = FindAnyObjectByType<MoveBehaviour>().gameObject;
         player.transform.position = initPoint.position;
 
-        player.transform.rotation = initPoint.rotation;
+       player.transform.rotation = initPoint.rotation;
     }
 
     // Update is called once per frame

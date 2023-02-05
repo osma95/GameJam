@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject WinPanel;
     public TMP_Text gameOverText;
 
-    public GameObject player;
+   
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -35,15 +35,15 @@ public class GameManager : MonoBehaviour
     {
         scene = SceneManager.GetActiveScene();
         pausedMenu.SetActive(false);
-        ClosedGameOverPanel();
+        gameOverPanel.SetActive(false);
         WinPanel.SetActive(false);
     }
    public void MainMenuLoading()
-    {
+    {  gameOverPanel.SetActive(false);
         pausedMenu.SetActive(false);
-        player= FindAnyObjectByType<MoveBehaviour>().gameObject;
-        Destroy(player.gameObject);
-        LoadingScreen.instance.LoadLevel(lobby);
+       // player= FindAnyObjectByType<MoveBehaviour>().gameObject;
+      //  Destroy(player.gameObject);
+       // LoadingScreen.instance.LoadLevel(lobby);
     }
     void Update()
     {
@@ -108,8 +108,5 @@ public class GameManager : MonoBehaviour
 
 
     }
-    public void ResetScene()
-    {
-        LoadingScreen.instance.LoadLevel(SceneManager.GetActiveScene().name );
-    }
+   
 }
