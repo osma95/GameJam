@@ -62,13 +62,7 @@ public class StickStats : MonoBehaviour
     }
     void levelUP()
     {
-        LevelUPStick();
-        if (groundNutrients >= 100)
-        {
-            groundNutrients = 0;
-            if(level!=3)
-            level++;
-        }
+       
     }
     void LevelUPStick()
     {
@@ -95,7 +89,8 @@ public class StickStats : MonoBehaviour
     public void UpgradeGround(float newNutri)
     {
 
-
+        if (groundNutrients >= 100) return;
+       
         groundNutrients +=newNutri;
         stickUI.UpgradeGroundSlider(groundNutrientMax, groundNutrients);
         if (groundNutrients >= groundNutrientMax)
