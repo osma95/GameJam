@@ -4,11 +4,11 @@ using UnityEngine;
 using StarterAssets;
 public class CharacterPositionInit : MonoBehaviour
 {
-    GameObject player;
+   public GameObject player;
     public Transform initPoint;
     void Start()
     {
-       player = FindAnyObjectByType<ThirdPersonController>().gameObject;
+
         player.transform.position = initPoint.position;
 
        player.transform.rotation = initPoint.rotation;
