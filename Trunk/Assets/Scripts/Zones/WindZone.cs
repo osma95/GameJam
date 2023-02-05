@@ -5,7 +5,7 @@ using UnityEngine;
 public class WindZone : MonoBehaviour
 {
 
- = public float strength;
+  public float strength;
     public Vector3 direction;
 
     public bool isActive;
@@ -51,7 +51,7 @@ public class WindZone : MonoBehaviour
         {
             if (other.GetComponent<SmoothGravity>())
         {
-
+                SmoothGravity sm=other.GetComponent<SmoothGravity>();
             }
         }
     }
@@ -63,7 +63,7 @@ public class WindZone : MonoBehaviour
             {
                 TrunkMovement tm = other.GetComponent<TrunkMovement>();
                 tm.windZone = this;
-                
+               
                 tm.windZone = null;
 
 
@@ -76,14 +76,3 @@ public class WindZone : MonoBehaviour
 
        
 }
-if (other.CompareTag("Player"))
-{
-
-    if (other.GetComponent<TrunkMovement>())
-    {
-        TrunkMovement tm = other.GetComponent<TrunkMovement>();
-        tm.windZone = this;
-
-
-
-    }

@@ -109,9 +109,7 @@ namespace StarterAssets
         private const float _threshold = 0.01f;
 
         private bool _hasAnimator;
-        public bool windZoneStatus;
 
-        public WindZone windZone;
         private bool IsCurrentDeviceMouse
         {
             get
