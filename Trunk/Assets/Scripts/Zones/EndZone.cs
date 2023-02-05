@@ -6,12 +6,15 @@ using UnityEngine.SceneManagement;
 public class EndZone : MonoBehaviour
 {
     public string gameScene;
-    private Scene scene;
-    RootControl rt =null;
+   
+    StickIdle stickIdle;
+    StickStats stickStats;
     void Start()
     {
-        rt = FindAnyObjectByType<RootControl>();
-        scene = SceneManager.GetActiveScene();
+        stickIdle = FindAnyObjectByType<StickIdle>();
+        stickStats = FindAnyObjectByType<StickStats>();
+
+
     }
 
     // Update is called once per frame
@@ -23,18 +26,20 @@ public class EndZone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
          {
-            LoadingScreen.instance.LoadLevel(gameScene);
-            if (scene.name== "Rooftop")
-            {
-                StartCoroutine(WINGame());
-              
-            }
+
+            stickStats.UpgradeGround(100);
+            if (stickIdle.transform.localScale != new Vector3 (2,2,2))
+               
+           stickIdle.trunks[4].transform.localScale = new Vector3(0.2f, 0.2f, 0.2f) *Time.deltaTime;
+                //StartCoroutine(WINGame());
+
+
         }
     }
 
     IEnumerator WINGame()
     {
-        rt.animator.SetBool("WIN", true);
+       
         yield return new WaitForSeconds(1);
 
         GameManager.instance.WinGame();

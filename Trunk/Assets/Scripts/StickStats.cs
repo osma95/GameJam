@@ -89,7 +89,7 @@ public class StickStats : MonoBehaviour
     public void UpgradeGround(float newNutri)
     {
 
-        if (groundNutrients >= 100) return;
+        if (groundNutrients >= 70) return;
        
         groundNutrients +=newNutri;
         stickUI.UpgradeGroundSlider(groundNutrientMax, groundNutrients);
