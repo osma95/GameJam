@@ -71,4 +71,8 @@ public class StickIdle : MonoBehaviour
             trunks[4].SetActive(true);
         }
     }
+
+
+
+
 }
