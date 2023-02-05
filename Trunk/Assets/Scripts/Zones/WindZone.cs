@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using StarterAssets;
 public class WindZone : MonoBehaviour
 {
 
 
   public float strength;
 
-    
+    public Animator animator;
 
     public Vector3 direction;
 
@@ -30,10 +30,11 @@ public class WindZone : MonoBehaviour
     {
         if (!isActive)
         {
-          
-            timeWindCounter-=Time.deltaTime;
+            
+              timeWindCounter-=Time.deltaTime;
           if (timeWindCounter <= 0)
             {
+                animator.SetBool("Wind", true);
                 isActive = true;
                 timeWindCounter = timeWindWait;
             }
@@ -43,19 +44,23 @@ public class WindZone : MonoBehaviour
             timeActiveCounter-=Time.deltaTime;
             if (timeActiveCounter<=0)
             {
+                animator.SetBool("Wind", false);
                 timeActiveCounter = timeActive;
                 isActive = false;
             }
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if (other.GetComponent<SmoothGravity>())
+            if (other.GetComponent<ThirdPersonController>())
         {
-                SmoothGravity sm=other.GetComponent<SmoothGravity>();
+               
+ ThirdPersonController pr = other.GetComponent<ThirdPersonController>();
+                pr.windZone = true;
+                pr.inWindZone = this;
             }
         }
     }
@@ -63,17 +68,13 @@ public class WindZone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (other.GetComponent<TrunkMovement>() )
+            if (other.GetComponent<ThirdPersonController>())
             {
-                TrunkMovement tm = other.GetComponent<TrunkMovement>();
-                tm.windZone = this;
-               
-                tm.windZone = null;
 
-
+                ThirdPersonController pr = other.GetComponent<ThirdPersonController>();
+                pr.inWindZone = null;
+                pr.windZone = false;
             }
-
-
         }
     }
 

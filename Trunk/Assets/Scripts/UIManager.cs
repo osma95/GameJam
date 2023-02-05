@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
-
+using Cinemachine;
 public class UIManager : MonoBehaviour
 {
 
     public static UIManager instance;
-
+  public  CinemachineVirtualCamera cinema;
 
 
     public GameObject creditPanel;
@@ -72,19 +72,39 @@ public class UIManager : MonoBehaviour
     }
     public void TutorialPanel()
     {
-        tutorialPanel.gameObject.SetActive(true);
+        if (!tutorialPanel.activeInHierarchy)
+        {
+            cinema.gameObject.SetActive(true);
+            tutorialPanel.gameObject.SetActive(true);
+        }
+        else if(tutorialPanel.activeInHierarchy)
+        {
+            cinema.gameObject.SetActive(false);
+            tutorialPanel.gameObject.SetActive(false);
+        }
+      
     }
     public void ClosedTutorialPanel()
     {
         if (tutorialPanel.activeInHierarchy)
             {
+            cinema.gameObject.SetActive(false);
             tutorialPanel.gameObject.SetActive(false);
         }
+        else
+        {
+            tutorialPanel.gameObject.SetActive(true);
+        }
 
-       
+
         if (tutorialPanel.activeInHierarchy && Input.GetKey(KeyCode.Escape))
         {
+            cinema.gameObject.SetActive(false);
             tutorialPanel.gameObject.SetActive(false);
+        }
+        else
+        {
+            tutorialPanel.gameObject.SetActive(true);
         }
     }
     public void OnClosedGame()
@@ -122,14 +142,10 @@ public class UIManager : MonoBehaviour
            DesPausedGame();
         }
 
-        if (Input.GetKeyDown(KeyCode.T) && !tutorialPanel.activeInHierarchy)
+      
+       if (Input.GetKeyDown(KeyCode.T) )
         {
             TutorialPanel();
-        }
-        else
-       if (Input.GetKeyDown(KeyCode.T) && tutorialPanel.activeInHierarchy)
-        {
-            ClosedTutorialPanel();
         }
 
         if (Input.GetKeyDown(KeyCode.C) && !creditPanel.activeInHierarchy)

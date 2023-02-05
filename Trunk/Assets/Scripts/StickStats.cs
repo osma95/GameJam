@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class StickStats : MonoBehaviour
 {
-   float stickWater;
+
+   public RootControl _rootControl;
+    float stickWater;
 
     float stickWaterMax=100;
 
@@ -47,12 +49,13 @@ public class StickStats : MonoBehaviour
        
         if (isRooted)
         {
-            
+            _rootControl.animator.SetBool("Root", true);
             stickUI.ActiveRootPanel();
             
         }
         else
         {
+            _rootControl.animator.SetBool("Root", false);
             stickUI.DesaRootPanel();
            
         }
@@ -75,13 +78,17 @@ public class StickStats : MonoBehaviour
     public void UpgradeWater(float newWater)
     {
         
-
+        
         stickWater+=newWater;
         stickUI.UpdateWaterSlider(stickWaterMax,stickWater);
         if (stickWater >= stickWaterMax)
         {
           
             stickWater =stickWaterMax;
+        }
+        else
+        {
+
         }
 
     }
