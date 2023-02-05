@@ -15,4 +15,16 @@ public class Ingrendets : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (other.gameObject.GetComponent<StickStats>())
+            {
+                other.GetComponent<StickStats>().UpgradeGround(20);
+                Destroy(gameObject);
+            }
+        }
+    }
 }
