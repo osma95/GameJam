@@ -78,7 +78,7 @@ namespace StarterAssets
         // cinemachine
         private float _cinemachineTargetYaw;
         private float _cinemachineTargetPitch;
-
+        public StickStats stickStats;
         // player
         private float _speed;
         private float _animationBlend;
@@ -158,7 +158,17 @@ namespace StarterAssets
 
             JumpAndGravity();
             GroundedCheck();
+            if(!stickStats.IsRooted)
             Move();
+            if (Input.GetKeyDown(KeyCode.R) && !stickStats.IsRooted)
+            {
+                stickStats.IsRooted = true;
+            }
+            else
+     if (Input.GetKeyDown(KeyCode.R) && stickStats.IsRooted)
+            {
+                stickStats.IsRooted = false;
+            }
         }
 
         private void LateUpdate()
