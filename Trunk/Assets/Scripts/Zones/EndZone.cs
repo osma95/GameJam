@@ -31,11 +31,10 @@ public class EndZone : MonoBehaviour
             other.GetComponent<StickStats>().enabled = false;
 
             // stickStats.UpgradeGround(100);
-            if (stickStats.RoundNutrients >= 100)
-            {
+            
                 GameManager.instance.WinGame();
                 GameManager.instance.winPanel.SetActive(true);
-            }
+            
            // if (stickIdle.transform.localScale != new Vector3 (2,2,2))
                
            stickIdle.trunks[4].transform.localScale += new Vector3(4f, 4f, 4) *Time.deltaTime;
