@@ -23,7 +23,7 @@ public class StickStats : MonoBehaviour
  
 
     public List<GameObject> stickModels = new List<GameObject>();   
-  
+    
     public bool IsRooted { get { return isRooted; } set { isRooted = value; } }
     void Start()
     {
@@ -70,7 +70,11 @@ public class StickStats : MonoBehaviour
     void LevelUPStick()
     {
 
+<<<<<<< HEAD
         
+=======
+       
+>>>>>>> 045a416d92aae3e22fb149ab82fca60a4a5d709a
     }
     public void UpgradeWater(float newWater)
     {
