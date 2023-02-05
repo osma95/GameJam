@@ -70,11 +70,6 @@ public class StickStats : MonoBehaviour
     void LevelUPStick()
     {
 
-<<<<<<< HEAD
-       
-=======
-
->>>>>>> e6bac8d789520d21dab5db19d3f78ca7d8c238ff
     }
     public void UpgradeWater(float newWater)
     {
