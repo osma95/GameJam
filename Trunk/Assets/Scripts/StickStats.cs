@@ -23,13 +23,13 @@ public class StickStats : MonoBehaviour
  
 
     public List<GameObject> stickModels = new List<GameObject>();   
-   Rigidbody rb;
+  
     public bool IsRooted { get { return isRooted; } set { isRooted = value; } }
     void Start()
     {
        
         stickWater = stickWaterMax; UpgradeWater(stickWaterMax);
-        rb = GetComponent<Rigidbody>();
+      
         UpgradeGround(0);
     }
 
@@ -47,16 +47,14 @@ public class StickStats : MonoBehaviour
        
         if (isRooted)
         {
-            rb.constraints = RigidbodyConstraints.FreezeAll;
+            
             stickUI.ActiveRootPanel();
-            rb.velocity = Vector3.zero;
+            
         }
         else
         {
             stickUI.DesaRootPanel();
-            rb.constraints = RigidbodyConstraints.None;
-            rb.constraints = RigidbodyConstraints.FreezeRotationZ;
-            rb.constraints = RigidbodyConstraints.FreezeRotationX;
+           
         }
     }
     void levelUP()
