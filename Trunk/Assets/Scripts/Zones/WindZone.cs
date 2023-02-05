@@ -5,7 +5,11 @@ using UnityEngine;
 public class WindZone : MonoBehaviour
 {
 
+
   public float strength;
+
+    
+
     public Vector3 direction;
 
     public bool isActive;
