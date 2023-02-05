@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+using StarterAssets;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,12 +9,13 @@ public class EndZone : MonoBehaviour
    
     StickIdle stickIdle;
     StickStats stickStats;
+    Vector3 scale;
     void Start()
     {
         stickIdle = FindAnyObjectByType<StickIdle>();
         stickStats = FindAnyObjectByType<StickStats>();
 
-
+        scale = new Vector3(5, 5, 5);
     }
 
     // Update is called once per frame
@@ -26,11 +27,13 @@ public class EndZone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
          {
-
+            other.GetComponent<ThirdPersonController>().enabled = false;
+            other.GetComponent<StickStats>().enabled = false;
+           
             stickStats.UpgradeGround(100);
-            if (stickIdle.transform.localScale != new Vector3 (2,2,2))
+           // if (stickIdle.transform.localScale != new Vector3 (2,2,2))
                
-           stickIdle.trunks[4].transform.localScale = new Vector3(0.2f, 0.2f, 0.2f) *Time.deltaTime;
+           stickIdle.trunks[4].transform.localScale += new Vector3(4f, 4f, 4) *Time.deltaTime;
                 //StartCoroutine(WINGame());
 
 
