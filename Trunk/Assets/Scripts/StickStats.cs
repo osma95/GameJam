@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StickStats : MonoBehaviour
 {
 
    public RootControl _rootControl;
     float stickWater;
-
+    public string sceneName;
     float stickWaterMax=100;
-
-   public int level;
+    private Scene scene;
+    public int level;
     public float waterForSecond;
     public float StickWater =>stickWater;
 
@@ -29,7 +30,8 @@ public class StickStats : MonoBehaviour
     public bool IsRooted { get { return isRooted; } set { isRooted = value; } }
     void Start()
     {
-       
+        scene = SceneManager.GetActiveScene();
+        sceneName = scene.name;
         stickWater = stickWaterMax; UpgradeWater(stickWaterMax);
       
         UpgradeGround(0);
@@ -44,6 +46,7 @@ public class StickStats : MonoBehaviour
         if (stickWater <= 0)
         {
             stickWater = 0;
+            SceneManager.LoadScene(sceneName);
             GameManager.instance.GameOverPanel("YOU LOSE YOU NEED MORE WATER");
         }
        
@@ -89,8 +92,7 @@ public class StickStats : MonoBehaviour
     public void UpgradeGround(float newNutri)
     {
 
-        if (groundNutrients >= 70) return;
-       
+      
         groundNutrients +=newNutri;
         stickUI.UpgradeGroundSlider(groundNutrientMax, groundNutrients);
         if (groundNutrients >= groundNutrientMax)
