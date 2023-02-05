@@ -32,8 +32,5 @@ public class EndZone : MonoBehaviour
         }
     }
 
-    IEnumerator WinGame()
-    {
-       
-    }
+   
 }
